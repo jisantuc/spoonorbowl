@@ -18,3 +18,6 @@ def index():
 def process():
     ''' records votes and redirects to another image '''
     pass 
+
+if __name__=="__main__":
+	app.run()
