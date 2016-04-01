@@ -3,13 +3,29 @@
 <head>
 	<title>Spoon or Bowl?</title>
 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 </head>
 
 <body>
 	<h1>Spoon or Bowl?</h1>
 
+	<div class="image">
+		<img src="/static/images/{{ image }}">
+	</div>
+
+	<div data-role="main" class="ui-content">
+		<form method="post" action="/process">
+			<label for="points">Points:</label>
+			<input type="range" name="points" id="points" value="50" min="0" max="100">
+			<input type="submit" data-inline="true" value="Submit">
+		</form>
+	</div>
 
 
+<scipt src="/static/js/script.js"
 </body>
 
 </html>
