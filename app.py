@@ -14,10 +14,11 @@ def index():
         image=image
     )
 
-@app.route('/process', methods=['POST'])
+@app.route('/process', methods=['POST', 'GET'])
 def process():
     ''' records votes and redirects to another image '''
-    pass 
+    formData = request.values
+    print formData
 
 if __name__=="__main__":
 	app.run()
