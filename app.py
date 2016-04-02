@@ -19,6 +19,7 @@ def process():
     ''' records votes and redirects to another image '''
     formData = request.values
     print formData
+    return index()
 
 if __name__=="__main__":
 	app.run()
