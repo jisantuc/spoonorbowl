@@ -10,6 +10,10 @@
 <body>
 	<h1>Spoon or Bowl?</h1>
 
+    <h2>Last image</h2>
+    <p> Your rating for {{ last_image }}: {{ last_score }} </p>
+    <p> Mean rating for {{ last_image }}: {{ mean_score }} </p>
+
 	<div class="image">
 		<img src="/static/images/{{ image }}">
 	</div>
@@ -18,6 +22,7 @@
         <input type="range" name={{ image }} min="0" max="10">
         <input type="submit">
     </form>
+
 
 <scipt src="/static/js/script.js"
 </body>
