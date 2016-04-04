@@ -33,9 +33,14 @@ class Vote(Base):
             )
         )
 
-
-    def mean(self, image):
+    @classmethod
+    def mean(cls, image):
         sess = Session()
+
+        if sess.query(Vote.image == image).count() == 0:
+            sess.close()
+            raise ValueError('No records for %s' % image)
+
         vote = (sess.query(func.avg(Vote.value))
                 .filter(Vote.image == image)
                 .scalar())
