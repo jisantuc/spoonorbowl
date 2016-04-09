@@ -2,24 +2,44 @@
 <html>
 <head>
 	<title>Spoon or Bowl?</title>
-
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script type="text/javascript"
+     href="{{ url_for('static', filename='main.js') }}"></script>
 
 </head>
 
 <body>
+    <script type="text/javascript">
+        function spoonOrBowl(value) {
+            if (value > 5) {
+                return 'Spoon';
+            } else if (value < 5) {
+                return 'Bowl';
+            } else {
+                return 'Neither';
+            }
+        }
+
+        function updateFrom(value) {
+            imageOutput.value = spoonOrBowl(value);
+        }
+    </script>
 	<h1>Spoon or Bowl?</h1>
 
 	<div class="image">
 		<img src="/static/images/{{ image }}">
 	</div>
 
-    <form action="/process" method="POST">
-        <input type="range" name={{ image }} min="0" max="10">
+    <form action="/process" method="POST" name="imageForm">
+        <input type="range" id="imageRange" name={{ image }} min="0" max="10"
+        step="0.25"
+        oninput="updateFrom(imageRange.value);"><br>
+        <div id="outputLabel">
+            <output name="imageOutput" id="imageOutput">Neither</output><br>
+        </div>
         <input type="submit">
     </form>
 
-<scipt src="/static/js/script.js"
 </body>
 
 </html>
