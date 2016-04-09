@@ -9,7 +9,7 @@ def test_vote_add():
     sess = Session()
     initial_votes = sess.query(Vote).count()
     Vote.add('testimg', 999)
-    new_votes = sess.query(Vote).filter(Vote.image == 'testimg').count()
+    new_votes = sess.query(Vote).count()
     assert new_votes == initial_votes + 1
     assert (sess.query(Vote).filter(Vote.image == 'testimg')
             .first()).value == 999
@@ -27,3 +27,6 @@ def test_vote_mean():
     assert Vote.mean('no_image') == 100
     Vote.add('no_image', 0)
     assert Vote.mean('no_image') == 50
+    (sess.query(Vote).filter(Vote.image == 'no_image')
+     .delete())
+    cleanup(sess)
